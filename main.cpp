@@ -10,19 +10,20 @@ const double dt = 0.001;
 int collisionCount = 0;
 
 // x, r, m, v
-double small[4] = {30, 10, 1, 0};
-double big[4] = {70, 20, 10000000000, -1};
+double small[4] = {300, 10, 1, 0};
+double big[4] = {700, 20, 100000000, -1};
 
 int main()
 {
     std::cout << "hello" << std::endl;
 
     long long int i = 0;
-    while(true)
+    while (true)
     {
-        if (i % 1000000000 == 0)
+        if (i % 100000000 == 0)
         {
-            spdlog::info("Now, we are calculating {} times", i);
+            spdlog::info("small: {}, {}  big: {}, {}  PI: {}", small[0], small[3], big[0], big[3], collisionCount);
+            // spdlog::info("Now, we are calculating {} times", i);
         }
 
         small[0] += small[3] * dt;
@@ -47,17 +48,22 @@ int main()
             collisionCount++;
             // std::cout << "collision" << i << std::endl;
         }
+        if (big[0] < 0)
+        {
+            spdlog::error("Big object was gone.");
+            spdlog::info("small: {}, {}  big: {}, {}  PI: {}", small[0], small[3], big[0], big[3], collisionCount);
+            break;
+        }
         if (small[3] >= 0 && big[3] >= 0 && (big[3] - small[3]) >= 0)
         {
-            std::cout << "small: " << small[0] << ", " << std::setprecision(10) << small[3] << ", "
-                      << "big: " << big[0] << ", " << big[3] << std::endl;
+            spdlog::info("small: {}, {}  big: {}, {}  PI: {}", small[0], small[3], big[0], big[3], collisionCount);
             std::cout << "--------------no more--------------" << std::endl;
             break;
         }
 
         // std::cout << "small: " << small[0] << ", " << std::setprecision(10) << small[3] << ", "
         //           << "big: " << big[0] << ", " << big[3] << std::endl;
-        
+
         i++;
     }
 
