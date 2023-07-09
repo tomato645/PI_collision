@@ -13,6 +13,7 @@ int collisionCount = 0;
 double small[4] = {300, 10, 1, 0};
 double big[4] = {700, 20, 100000000, -1};
 
+
 int main()
 {
     std::cout << "hello" << std::endl;
