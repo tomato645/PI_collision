@@ -58,7 +58,7 @@ int main()
         if (small[3] >= 0 && big[3] >= 0 && (big[3] - small[3]) >= 0)
         {
             spdlog::info("small: {}, {}  big: {}, {}  PI: {}", small[0], small[3], big[0], big[3], collisionCount);
-            std::cout << "--------------no more--------------" << std::endl;
+            std::cout << "--------------no more collision--------------" << std::endl;
             break;
         }
 
